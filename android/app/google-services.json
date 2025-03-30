@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "828161650526",
+    "project_id": "bettingapp-d6a38",
+    "storage_bucket": "bettingapp-d6a38.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828161650526:android:d84f9b90798417b727e9cf",
+        "android_client_info": {
+          "package_name": "com.example.betdofe_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHT8_XCzNLA6YbvN7u6J6fCY6BvyB7-2k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

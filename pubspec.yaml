@@ -1,0 +1,29 @@
+name: betdofe_app
+description: Um aplicativo Flutter integrado ao Firebase para gerenciamento de apostas esportivas.
+
+version: 1.0.0+1
+
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  firebase_core: ^2.27.2
+  firebase_auth: ^4.19.2
+  cloud_firestore: ^4.17.4
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
