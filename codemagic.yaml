@@ -35,8 +35,10 @@ workflows:
           echo "Copying provisioning profile..."
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp /Users/builder/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/ || true
+          echo "Listing provisioning profiles..."
+          ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
           echo "Running xcodebuild archive..."
-          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Debug -archivePath build/Runner.xcarchive archive IPHONEOS_DEPLOYMENT_TARGET=12.0 -allowProvisioningUpdates DEVELOPMENT_TEAM=X89LJ3ZB4R -provisioningProfile "76e74c4f-bdd3-474a-97be-fd2899d08353"
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Debug -archivePath build/Runner.xcarchive archive -sdk iphoneos IPHONEOS_DEPLOYMENT_TARGET=12.0 -allowProvisioningUpdates -authenticationKeyPath "$HOME/.appstoreconnect/private_key.p8" -authenticationKeyID "$CM_AUTH_KEY_ID" -authenticationKeyIssuerID "$CM_AUTH_ISSUER_ID" DEVELOPMENT_TEAM=X89LJ3ZB4R
           echo "Running xcodebuild export..."
           xcodebuild -exportArchive -archivePath build/Runner.xcarchive -exportOptionsPlist ../export_options.plist -exportPath build/ipa
           echo "Moving .ipa..."
