@@ -4,7 +4,7 @@ workflows:
     max_build_duration: 120
     environment:
       xcode: 16.1
-      flutter: latest
+      flutter: 3.22.0
       vars:
         IPHONEOS_DEPLOYMENT_TARGET: "12.0"
     scripts:
