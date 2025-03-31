@@ -11,7 +11,7 @@ workflows:
       - name: Build iOS
         script: |
           #!/bin/sh
-          set -e  # Para parar no primeiro erro
+          set -e
           echo "Starting pre-build script..."
           flutter clean
           flutter pub get
@@ -38,7 +38,7 @@ workflows:
           echo "Listing provisioning profiles..."
           ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
           echo "Running xcodebuild archive..."
-          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Debug -archivePath build/Runner.xcarchive archive -sdk iphoneos IPHONEOS_DEPLOYMENT_TARGET=12.0 -allowProvisioningUpdates -authenticationKeyPath "$HOME/.appstoreconnect/private_key.p8" -authenticationKeyID "$CM_AUTH_KEY_ID" -authenticationKeyIssuerID "$CM_AUTH_ISSUER_ID" DEVELOPMENT_TEAM=X89LJ3ZB4R
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Debug -archivePath build/Runner.xcarchive archive -sdk iphoneos IPHONEOS_DEPLOYMENT_TARGET=12.0 DEVELOPMENT_TEAM=X89LJ3ZB4R
           echo "Running xcodebuild export..."
           xcodebuild -exportArchive -archivePath build/Runner.xcarchive -exportOptionsPlist ../export_options.plist -exportPath build/ipa
           echo "Moving .ipa..."
