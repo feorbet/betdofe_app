@@ -34,11 +34,12 @@ workflows:
           find . -name "project.pbxproj" -exec sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = [0-9]\+\.[0-9]\+/IPHONEOS_DEPLOYMENT_TARGET = 12.0/g' {} \;
           echo "Copying provisioning profile..."
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          cp /Users/builder/Library/MobileDevice/Provisioning\ Profiles/*.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/ || true
+          # Usar o caminho correto do Codemagic
+          cp /Users/builder/Library/MobileDevice/Provisioning\ Profiles/* ~/Library/MobileDevice/Provisioning\ Profiles/ || true
           echo "Listing provisioning profiles..."
           ls -la ~/Library/MobileDevice/Provisioning\ Profiles/
           echo "Running xcodebuild archive..."
-          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Debug -archivePath build/Runner.xcarchive archive -sdk iphoneos IPHONEOS_DEPLOYMENT_TARGET=12.0 DEVELOPMENT_TEAM=X89LJ3ZB4R
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -configuration Debug -archivePath build/Runner.xcarchive archive -sdk iphoneos IPHONEOS_DEPLOYMENT_TARGET=12.0 DEVELOPMENT_TEAM=X89LJ3ZB4R -allowProvisioningUpdates -provisioningProfile "76e74c4f-bdd3-474a-97be-fd2899d08353"
           echo "Running xcodebuild export..."
           xcodebuild -exportArchive -archivePath build/Runner.xcarchive -exportOptionsPlist ../export_options.plist -exportPath build/ipa
           echo "Moving .ipa..."
